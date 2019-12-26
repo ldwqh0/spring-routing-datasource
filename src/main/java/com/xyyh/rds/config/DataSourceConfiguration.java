@@ -13,7 +13,6 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 public class DataSourceConfiguration {
-
     @Bean
     public DataSource dataSource() {
         DataSource readSource = readSource();
@@ -23,7 +22,7 @@ public class DataSourceConfiguration {
         sourceMap.put("read", readSource);
         sourceMap.put("write", writeSource);
         source.setTargetDataSources(sourceMap);
-        source.setDefaultTargetDataSource(readSource);
+        source.setDefaultTargetDataSource(writeSource);
         return source;
     }
 
@@ -46,5 +45,4 @@ public class DataSourceConfiguration {
         writeSource.setPassword("admin123456!@#");
         return writeSource;
     }
-
 }
